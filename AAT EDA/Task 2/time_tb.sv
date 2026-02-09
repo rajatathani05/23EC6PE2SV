@@ -2,7 +2,7 @@
 // File        : digital clock
 // Author      : Rajat Athani / 1BM24EC417
 // Created     : 2026-02-04
-// Module      : Digital clock
+// Module      : tb
 // Project     : SystemVerilog and Verification (23EC6PE2SV)
 // Faculty     : Prof. Ajaykumar Devarapalli
 //
@@ -53,5 +53,6 @@ module tb;
     $display("Coverage = %0.2f %%", cg.get_inst_coverage());
     $finish;
   end
+
 
 endmodule
