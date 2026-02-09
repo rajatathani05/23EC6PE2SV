@@ -2,7 +2,7 @@
 // File        : Dual Port RAM 
 // Author      : Rajat Athani / 1BM24EC417
 // Created     : 2026-02-04
-// Module      : Dual Port RAM 
+// Module      : tb
 // Project     : SystemVerilog and Verification (23EC6PE2SV)
 // Faculty     : Prof. Ajaykumar Devarapalli
 //
@@ -111,5 +111,6 @@ module tb;
     $display(" Final Coverage: %0.2f %%", cg.get_inst_coverage());
     $finish;
   end
+
 
 endmodule
