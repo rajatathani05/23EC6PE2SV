@@ -1,0 +1,65 @@
+//------------------------------------------------------------------------------
+// File        : atm controller
+// Author      : Rajat Athani /1BM24EC417 <USN>
+// Created     : 2026-02-04
+// Module      : ATM controller
+// Project     : SystemVerilog and Verification (23EC6PE2SV)
+// Faculty     : Prof. Ajaykumar Devarapalli
+//
+// Description : This module implements an FSM-based ATM controller to manage user
+//               authentication and transaction operations.
+//------------------------------------------------------------------------------
+module atm_fsm (
+  input  logic clk,
+  input  logic rst,
+  input  logic card,
+  input  logic pin_ok,
+  input  logic bal_ok,
+  output logic dispense
+);
+
+  typedef enum logic [1:0] {
+    IDLE,
+    CHECK_PIN,
+    CHECK_BAL,
+    DISPENSE
+  } state_t;
+
+  state_t state, next;
+
+  always_ff @(posedge clk or posedge rst) begin
+    if (rst)
+      state <= IDLE;
+    else
+      state <= next;
+  end
+
+  always_comb begin
+    next = state;
+    dispense = 0;
+
+    case (state)
+      IDLE:
+        if (card)
+          next = CHECK_PIN;
+
+      CHECK_PIN:
+        if (pin_ok)
+          next = CHECK_BAL;
+        else
+          next = IDLE;
+
+      CHECK_BAL:
+        if (bal_ok)
+          next = DISPENSE;
+        else
+          next = IDLE;
+
+      DISPENSE: begin
+        dispense = 1;
+        next = IDLE;
+      end
+    endcase
+  end
+
+endmodule
