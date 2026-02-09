@@ -2,7 +2,7 @@
 // File        : atm controller
 // Author      : Rajat Athani / 1BM24EC417
 // Created     : 2026-02-04
-// Module      : ATM controller
+// Module      : tb
 // Project     : SystemVerilog and Verification (23EC6PE2SV)
 // Faculty     : Prof. Ajaykumar Devarapalli
 //
@@ -69,5 +69,6 @@ module tb;
 
     #50 $finish;
   end
+
 
 endmodule
